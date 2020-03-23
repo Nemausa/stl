@@ -1,0 +1,2 @@
+#define SET_STRING(str1)  (CString(#str1))
+#define SET(a)	 (CString(_T("aaa='"))+ SET_STRING(a) + CString(_T("'")))
