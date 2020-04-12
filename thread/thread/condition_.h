@@ -90,6 +90,13 @@ namespace condition_
         std::condition_variable condition_;
     };
 
+	void test()
+	{
+		std::cout << 0 << std::endl;
+	}
+
+	std::vector<void*> workers;
+
     void func()
     {
         // 一:条件变量std::condition_variable、wati()、notify_one()
@@ -104,6 +111,8 @@ namespace condition_
         std::thread input_thread(&A::input, &obj);
         std::thread output_thread(&A::output, &obj);
         std::thread output_thread2(&A::output, &obj);
+
+		workers.emplace_back(test);
 
         input_thread.join();
         output_thread.join();
